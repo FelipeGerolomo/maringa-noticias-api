@@ -1,0 +1,1 @@
+# maringa-noticias-api
