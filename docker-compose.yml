@@ -11,16 +11,4 @@ services:
     links:
       - mongo
     environment:
-      - MONGO_DB_URI=mongodb://mongo:27017/maringa-noticias-api
-
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes_from:
-      - mongodata
-
-  mongodata:
-    image: tianon/true
-    volumes:
-      - /data/db
+      - MONGO_DB_URI=mongodb://gerolomo:gerolomo5298@maringa-noticias-shard-00-00-y6ngn.gcp.mongodb.net:27017,maringa-noticias-shard-00-01-y6ngn.gcp.mongodb.net:27017,maringa-noticias-shard-00-02-y6ngn.gcp.mongodb.net:27017/maringa-noticias?ssl=true&replicaSet=maringa-noticias-shard-0&authSource=admin&retryWrites=true&w=majority
