@@ -3,7 +3,10 @@ const newsSchema = require("../schema/news/schema");
 const Facade = require("../lib/facade");
 
 exports.scrape = async () => {
-  const browser = await puppeteer.launch({ headless: true, devtools: true, args: ['--no-sandbox'] });
+  const browser = await puppeteer.launch({
+    executablePath: process.env.CHROME_BIN || null,
+    args: ['--no-sandbox', '--headless', '--disable-gpu']
+  });
   Promise.resolve([
     getProvider("Maringá na Hora").then((provider) =>
       getMaringaNaHora(browser, provider).then((res) => createNews(res))
