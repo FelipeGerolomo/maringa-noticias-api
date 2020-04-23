@@ -37,7 +37,7 @@ const updateWeather = schedule.scheduleJob("*/20 * * * *", () => {
   weatherService.WeatherService();
 });
 
-const updateNews = schedule.scheduleJob("*/1 * * * *", () => {
+const updateNews = schedule.scheduleJob("*/120 * * * *", () => {
   crawler.scrape().then(() => console.log("Finalizado!"));
 });
 
