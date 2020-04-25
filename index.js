@@ -38,7 +38,8 @@ const updateWeather = schedule.scheduleJob("*/20 * * * *", () => {
 });
 
 const updateNews = schedule.scheduleJob("*/120 * * * *", () => {
-  crawler.scrape().then(() => console.log("Finalizado!"));
+  console.log('GET NOTICIAS');
+  //crawler.scrape().then(() => console.log("Finalizado!"));
 });
 
 module.exports = app;
