@@ -7,7 +7,7 @@ exports.scrape = async () => {
     executablePath: process.env.CHROME_BIN || null,
     args: ["--no-sandbox", "--headless", "--disable-gpu"],
   });
-  Promise.resolve([
+  Promise.all([
     getProvider("Maringá na Hora").then((provider) =>
       getMaringaNaHora(browser, provider).then((res) => createNews(res))
     ),
@@ -23,9 +23,8 @@ exports.scrape = async () => {
     getProvider("Plantão Maringá").then((provider) =>
       getPlantaoMaringa(browser, provider).then((res) => createNews(res))
     ),
-  ]);
+  ]).then(() => browser.close());
 
-  //await browser.close()
 };
 
 const createNews = (news) => {
@@ -77,7 +76,6 @@ const getMaringaNaHora = async (browser, provider) => {
     });
     return noticias;
   }, provider);
-  page.close();
   return result;
 };
 
@@ -117,7 +115,6 @@ const getMaringaPost = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-  page.close();
   return result;
 };
 
@@ -152,7 +149,6 @@ const getAndreAlmenara = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-  page.close();
   return result;
 };
 
@@ -186,7 +182,7 @@ const getPlantaoMaringa = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-  page.close();
+  console.log('plantão');
   return result;
 };
 
@@ -220,6 +216,5 @@ const getGMC = async (browser, provider) => {
       }, provider);
     return noticias;
   }, provider);
-  page.close();
   return result;
 };
