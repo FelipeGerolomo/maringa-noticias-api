@@ -5,7 +5,7 @@ const Facade = require("../lib/facade");
 exports.scrape = async () => {
   const browser = await puppeteer.launch({
     executablePath: process.env.CHROME_BIN || null,
-    args: ['--no-sandbox', '--headless', '--disable-gpu']
+    args: ["--no-sandbox", "--headless", "--disable-gpu"],
   });
   Promise.resolve([
     getProvider("Maringá na Hora").then((provider) =>
@@ -25,7 +25,7 @@ exports.scrape = async () => {
     ),
   ]);
 
-  //browser.close()
+  //await browser.close()
 };
 
 const createNews = (news) => {
@@ -40,7 +40,7 @@ const getProvider = async (dsName) => {
 };
 
 const getMaringaNaHora = async (browser, provider) => {
-  const page = await browser.newPage();
+  const page = (await browser.pages())[0];
   page.setDefaultNavigationTimeout(0);
   await page.goto("https://www.maringanahora.com/noticias", {
     waitUntil: "load",
@@ -77,7 +77,7 @@ const getMaringaNaHora = async (browser, provider) => {
     });
     return noticias;
   }, provider);
-
+  page.close();
   return result;
 };
 
@@ -117,7 +117,7 @@ const getMaringaPost = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-
+  page.close();
   return result;
 };
 
@@ -152,7 +152,7 @@ const getAndreAlmenara = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-
+  page.close();
   return result;
 };
 
@@ -186,7 +186,7 @@ const getPlantaoMaringa = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-
+  page.close();
   return result;
 };
 
@@ -204,7 +204,7 @@ const getGMC = async (browser, provider) => {
       .forEach((htmlBody) => {
         noticias.push({
           dsTitle: htmlBody.querySelector(
-            ".fc-categoria-1.ff-montserrat.fw-bold.texto-upper"
+            ".texto.fc-cinza.col-xs-12.no-padding"
           ).textContent,
           dsUrl: htmlBody.getAttribute("href").toString(),
           dsImageUrl: htmlBody
@@ -212,14 +212,14 @@ const getGMC = async (browser, provider) => {
             .getAttribute("src")
             .toString(),
           dsDescription: htmlBody.querySelector(
-            ".fc-categoria-1.ff-montserrat.fw-bold.texto-upper"
+            ".texto.fc-cinza.col-xs-12.no-padding"
           ).textContent,
           isHighlightedNews: false,
-          provider
+          provider,
         });
       }, provider);
     return noticias;
-  },provider);
-
+  }, provider);
+  page.close();
   return result;
 };
