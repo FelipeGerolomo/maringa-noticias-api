@@ -13,7 +13,7 @@ router.route('/like')
   .get((...args) => controller.findNewsDsTitleLike(...args))
 
 router.route('/:id')
-  .put((...args) => controller.update(...args))
+  .put((...args) => controller.updateOne(...args))
   .get((...args) => controller.findById(...args))
   .delete((...args) => controller.remove(...args))
 

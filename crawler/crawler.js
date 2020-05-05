@@ -71,6 +71,7 @@ const getMaringaNaHora = async (browser, provider) => {
           "div.font_load_post > .post_caption > a:last-child"
         ).textContent,
         isHighlightedNews: false,
+        nrViews: 0,
         provider,
       });
     });
@@ -110,6 +111,7 @@ const getMaringaPost = async (browser, provider) => {
             "div.td-module-meta-info > div.td-excerpt"
           ).textContent,
           isHighlightedNews: false,
+          nrViews: 0,
           provider,
         });
       });
@@ -144,6 +146,7 @@ const getAndreAlmenara = async (browser, provider) => {
             .toString(),
           dsDescription: null,
           isHighlightedNews: false,
+          nrViews: 0,
           provider,
         });
       });
@@ -177,6 +180,7 @@ const getPlantaoMaringa = async (browser, provider) => {
           dsDescription: htmlBody.querySelector("div.desc_noticia p")
             .textContent,
           isHighlightedNews: false,
+          nrViews: 0,
           provider,
         });
       });
@@ -211,6 +215,7 @@ const getGMC = async (browser, provider) => {
             ".texto.fc-cinza.col-xs-12.no-padding"
           ).textContent.replace(/^\s+/g, '').trimRight(),
           isHighlightedNews: false,
+          nrViews: 0,
           provider,
         });
       }, provider);

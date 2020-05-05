@@ -34,7 +34,7 @@ class NewsController extends Controller {
 
     return newsFacade
       .getModel()
-      .find({ dsTitle: { $regex: `${pageOptions.dsTitle}`, "$options": "i" } })
+      .find({ dsTitle: { $regex: `${pageOptions.dsTitle}`, $options: "i" } })
       .limit(5)
       .sort({ createdAt: -1 })
       .exec()
@@ -43,9 +43,24 @@ class NewsController extends Controller {
   }
 
   updateNrViewNews(req, res, next) {
-    req.body.nrView = req.body.nrView++
-    console.log(req.body.nrView);
-    return null;
+    console.log(true);
+    const news = req.body;
+    if (req.body.nrView) {
+      news.nrView++;
+    } else {
+      news["nrView"] = 0;
+    }
+
+    console.log(news);
+    
+
+    return this.facade
+      .updateOne({ _id: news._id }, news)
+      .then((results) => {
+        console.log('results',results)
+        res.sendStatus(304);
+      })
+      .catch((err) => next(err));
   }
 }
 
