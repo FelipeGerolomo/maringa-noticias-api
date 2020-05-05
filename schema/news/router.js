@@ -17,4 +17,7 @@ router.route('/:id')
   .get((...args) => controller.findById(...args))
   .delete((...args) => controller.remove(...args))
 
+router.route('/updateNrViewNews')
+  .post((...args) => controller.updateNrViewNews(...args))
+
 module.exports = router

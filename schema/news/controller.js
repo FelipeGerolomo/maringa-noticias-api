@@ -41,6 +41,12 @@ class NewsController extends Controller {
       .then((collection) => res.status(200).json(collection))
       .catch((err) => next(err));
   }
+
+  updateNrViewNews(req, res, next) {
+    req.body.nrView = req.body.nrView++
+    console.log(req.body.nrView);
+    return null;
+  }
 }
 
 module.exports = new NewsController(newsFacade);

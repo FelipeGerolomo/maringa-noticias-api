@@ -9,6 +9,7 @@ const schedule = require("node-schedule");
 const config = require("./config");
 const routes = require("./routes");
 const crawler = require("./crawler/crawler");
+const crawlerTeste = require("./crawler/crawlerTeste");
 const weatherService = require("./schema/weather/serviceWeather");
 
 const app = express();
@@ -38,6 +39,8 @@ const updateWeather = schedule.scheduleJob("*/20 * * * *", () => {
 });
 
 //crawler.scrape().then(() => console.log("Finalizado!"));
+
+//crawlerTeste.scrape()
 
 const updateNews = schedule.scheduleJob("*/30 * * * *", () => {
   crawler.scrape().then(() => console.log("Finalizado!"));

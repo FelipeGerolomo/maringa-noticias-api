@@ -201,7 +201,7 @@ const getGMC = async (browser, provider) => {
         noticias.push({
           dsTitle: htmlBody.querySelector(
             ".texto.fc-cinza.col-xs-12.no-padding"
-          ).textContent,
+          ).textContent.replace(/^\s+/g, '').trimRight(),
           dsUrl: htmlBody.getAttribute("href").toString(),
           dsImageUrl: htmlBody
             .querySelector("img")
@@ -209,7 +209,7 @@ const getGMC = async (browser, provider) => {
             .toString(),
           dsDescription: htmlBody.querySelector(
             ".texto.fc-cinza.col-xs-12.no-padding"
-          ).textContent,
+          ).textContent.replace(/^\s+/g, '').trimRight(),
           isHighlightedNews: false,
           provider,
         });
