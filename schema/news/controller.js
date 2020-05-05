@@ -45,22 +45,14 @@ class NewsController extends Controller {
   updateNrViewNews(req, res, next) {
     console.log(true);
     const news = req.body;
-    if (req.body.nrView) {
-      news.nrView++;
-    } else {
-      news["nrView"] = 0;
-    }
-
+    news.nrViews++;
     console.log(news);
-    
 
-    return this.facade
-      .updateOne({ _id: news._id }, news)
+    this.facade.updateOne({ _id: req.params.id }, news)
       .then((results) => {
-        console.log('results',results)
-        res.sendStatus(304);
+        res.sendStatus(204)
       })
-      .catch((err) => next(err));
+      .catch(err => next(err))
   }
 }
 
