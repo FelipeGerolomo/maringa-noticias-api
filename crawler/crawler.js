@@ -24,7 +24,6 @@ exports.scrape = async () => {
       getPlantaoMaringa(browser, provider).then((res) => createNews(res))
     ),
   ]).then(() => browser.close());
-
 };
 
 const createNews = (news) => {
@@ -186,39 +185,36 @@ const getPlantaoMaringa = async (browser, provider) => {
       });
     return noticias;
   }, provider);
-  console.log('plantão');
   return result;
 };
 
 const getGMC = async (browser, provider) => {
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0);
-  await page.goto("http://www.gmconline.com.br/noticias/cidade/pag", {
+  await page.goto("https://gmconline.com.br/editoria/noticias/cidade/", {
     waitUntil: "load",
     timeout: 0,
   });
   const result = await page.evaluate((provider) => {
     const noticias = [];
     document
-      .querySelectorAll("div.mais-noticias > div.row > a")
+      .querySelectorAll(".noticias-lista article.noticia")
       .forEach((htmlBody) => {
         noticias.push({
-          dsTitle: htmlBody.querySelector(
-            ".texto.fc-cinza.col-xs-12.no-padding"
-          ).textContent.replace(/^\s+/g, '').trimRight(),
-          dsUrl: htmlBody.getAttribute("href").toString(),
+          dsTitle: htmlBody.querySelector(".article-title").textContent,
+          dsUrl: htmlBody
+            .querySelector(".article-title a")
+            .getAttribute("href"),
           dsImageUrl: htmlBody
             .querySelector("img")
-            .getAttribute("src")
+            .getAttribute("data-src")
             .toString(),
-          dsDescription: htmlBody.querySelector(
-            ".texto.fc-cinza.col-xs-12.no-padding"
-          ).textContent.replace(/^\s+/g, '').trimRight(),
+          dsDescription: htmlBody.querySelector(".article-title").textContent,
           isHighlightedNews: false,
           nrViews: 0,
           provider,
         });
-      }, provider);
+      });
     return noticias;
   }, provider);
   return result;
