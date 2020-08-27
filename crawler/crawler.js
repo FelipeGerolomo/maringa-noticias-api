@@ -4,8 +4,9 @@ const Facade = require("../lib/facade");
 
 exports.scrape = async () => {
   const browser = await puppeteer.launch({
+    headless: false,
     executablePath: process.env.CHROME_BIN || null,
-    args: ["--no-sandbox", "--headless", "--disable-gpu"],
+    args: ["--no-sandbox", "--disable-gpu"],
   });
   Promise.all([
     getProvider("Maringá na Hora").then((provider) =>

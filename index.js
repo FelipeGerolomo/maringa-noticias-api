@@ -40,6 +40,8 @@ const updateWeather = schedule.scheduleJob("*/20 * * * *", () => {
 
 //crawlerTeste.scrape()
 
+weatherService.WeatherService();
+
 //crawler.scrape().then(() => console.log("Finalizado!"));
 
 const updateNews = schedule.scheduleJob("*/30 * * * *", () => {
