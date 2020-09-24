@@ -8,6 +8,10 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
     command: npm run dev
   dozzle:
     container_name: dozzle
