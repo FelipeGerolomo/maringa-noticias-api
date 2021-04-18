@@ -30,14 +30,14 @@ public class MaringanoticiasApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() throws IOException {
-        //this.weatherService.getWeather();
-        //this.crawlerService.start();
+        this.weatherService.getWeather();
+        this.crawlerService.start();
     }
 
-    @Scheduled(cron = "0 0/2 * * * ?")
+    @Scheduled(cron = "0 0/50 * * * ?")
     public void scheduleFixedDelayTask() throws IOException {
-        //this.weatherService.getWeather();
-        //this.crawlerService.start();
+        this.weatherService.getWeather();
+        this.crawlerService.start();
     }
 
 }
