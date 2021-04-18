@@ -17,13 +17,13 @@ public class BaseDTO implements Serializable {
 
 	protected Long id;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Brasilia")
 	protected Date dhInsert;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Brasilia")
 	protected Date dhUpdate;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Brasilia")
 	protected Date dhDelete;
 
 	protected Boolean flAtivo = true;

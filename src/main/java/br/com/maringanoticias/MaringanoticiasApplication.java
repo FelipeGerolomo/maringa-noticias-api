@@ -10,8 +10,9 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
-
+import java.util.TimeZone;
 
 
 @SpringBootApplication
@@ -32,6 +33,11 @@ public class MaringanoticiasApplication {
     public void doSomethingAfterStartup() throws IOException {
         this.weatherService.getWeather();
         this.crawlerService.start();
+    }
+
+    @PostConstruct
+    void started() {
+        TimeZone.setDefault(TimeZone.getTimeZone("TimeZone"));
     }
 
     @Scheduled(cron = "0 0/50 * * * ?")

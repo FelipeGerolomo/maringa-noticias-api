@@ -35,7 +35,7 @@ public class PlantaoMaringa {
             NewsDTO news = new NewsDTO();
             news.setDsTitle(element.select("h2.hidden-xs").text());
             news.setDsUrl(element.select("div.desc_noticia a").attr("href"));
-            news.setDsImageUrl(element.select("img").attr("src"));
+            news.setDsImageUrl(element.select("img").attr("data-src"));
             news.setDsDescription(element.select("div.desc_noticia p").text());
             news.setSourceNews(sourceNews);
             if (!this.newsService.isExistNews(news)) {
