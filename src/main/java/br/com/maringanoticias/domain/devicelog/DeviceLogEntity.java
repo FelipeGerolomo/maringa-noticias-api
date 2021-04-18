@@ -22,17 +22,21 @@ import javax.persistence.Table;
 public class DeviceLogEntity extends BaseEntity<DeviceLogDTO, Long> {
     private static final long serialVersionUID = 1L;
 
-    @Basic(optional = false)
-    @Column(name = "DS_DEVICE_TYPE")
-    private String dsDeviceType;
+    @Basic(optional = true)
+    @Column(name = "DS_DEVICE_OS")
+    private String dsDeviceOS;
 
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "DS_DEVICE_IP")
-    private String dsDeviceIp;
+    private String dsDeviceIP;
 
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "DS_DEVICE_MODEL")
     private String dsDeviceModel;
+
+    @Basic(optional = true)
+    @Column(name = "DS_APP_VERSION")
+    private String dsAppVersion;
 
     @Override
     public DeviceLogDTO getSimpleDTO() {

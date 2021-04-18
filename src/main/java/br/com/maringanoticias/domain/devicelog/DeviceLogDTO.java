@@ -12,11 +12,13 @@ import java.io.Serializable;
 public class DeviceLogDTO extends BaseDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String dsDeviceType;
+    private String dsDeviceOS;
 
-    private String dsDeviceIp;
+    private String dsDeviceIP;
 
     private String dsDeviceModel;
+
+    private String dsAppVersion;
 
     
 }

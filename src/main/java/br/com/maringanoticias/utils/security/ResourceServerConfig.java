@@ -25,6 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			"/source-news/**",
 			"/weather/**",
 			"/news-log/**",
+			"/device-log/**",
 	};
 
 	@Override

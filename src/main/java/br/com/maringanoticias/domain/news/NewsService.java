@@ -3,6 +3,10 @@ package br.com.maringanoticias.domain.news;
 import br.com.maringanoticias.utils.CrudBaseService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,4 +26,9 @@ public class NewsService extends CrudBaseService<NewsDTO, NewsEntity, Long, News
         }
         return true;
     }
+
+    public List<NewsDTO> findByDsTitle(String dsTitle) {
+        return mapper.toDTO(repository.findTop1ByDsTitle(dsTitle));
+    }
+
 }

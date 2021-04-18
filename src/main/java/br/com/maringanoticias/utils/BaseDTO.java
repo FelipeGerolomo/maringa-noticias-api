@@ -1,9 +1,11 @@
 package br.com.maringanoticias.utils;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -15,11 +17,14 @@ public class BaseDTO implements Serializable {
 
 	protected Long id;
 
-	protected LocalDateTime dhInsert;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	protected Date dhInsert;
 
-	protected LocalDateTime dhUpdate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	protected Date dhUpdate;
 
-	protected LocalDateTime dhDelete;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
+	protected Date dhDelete;
 
 	protected Boolean flAtivo = true;
 }
