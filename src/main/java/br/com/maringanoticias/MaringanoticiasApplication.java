@@ -29,12 +29,6 @@ public class MaringanoticiasApplication {
         SpringApplication.run(MaringanoticiasApplication.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void doSomethingAfterStartup() throws IOException {
-        this.weatherService.getWeather();
-        this.crawlerService.start();
-    }
-
     @PostConstruct
     void started() {
         TimeZone.setDefault(TimeZone.getTimeZone("TimeZone"));
