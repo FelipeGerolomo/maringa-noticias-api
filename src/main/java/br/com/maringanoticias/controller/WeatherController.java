@@ -39,7 +39,7 @@ public class WeatherController extends CrudBaseController<Long, WeatherDTO, Weat
         return service.getLastWeather();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/icon/{image}", produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/icon/{image}", produces = "image/svg+xml")
     public @ResponseBody
     byte[] getIconWeather(@PathVariable("image") String image) throws IOException {
         InputStream in = getClass().getResourceAsStream("/images/weather/" + image + ".svg");
