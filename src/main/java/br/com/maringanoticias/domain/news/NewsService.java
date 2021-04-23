@@ -27,6 +27,10 @@ public class NewsService extends CrudBaseService<NewsDTO, NewsEntity, Long, News
         return true;
     }
 
+    public List<NewsDTO> findMostWeekViewed() {
+        return mapper.toDTO(repository.findMostWeekViewed());
+    }
+
     public List<NewsDTO> findByDsTitle(String dsTitle) {
         return mapper.toDTO(repository.findTop1ByDsTitle(dsTitle));
     }

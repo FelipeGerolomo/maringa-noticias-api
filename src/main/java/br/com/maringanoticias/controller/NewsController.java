@@ -39,5 +39,12 @@ public class NewsController extends CrudBaseController<Long, NewsDTO, NewsServic
         return service.findByDsTitle(dsTitle);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/week-viewed")
+    public List<NewsDTO> findMostWeekViewed() {
+        return service.findMostWeekViewed();
+    }
+
+
+
 
 }
