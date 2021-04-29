@@ -26,6 +26,9 @@ public class MaringaPost {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("MARINGA POST");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("MARINGA_POST");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();

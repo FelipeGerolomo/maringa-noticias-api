@@ -26,6 +26,9 @@ public class PlantaoMaringa {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("PLANTAO MARINGA");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("PLANTAO_MARINGA");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();

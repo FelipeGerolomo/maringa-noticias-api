@@ -28,7 +28,8 @@ public class MaringanoticiasApplication {
     }
 
     @PostConstruct
-    void started() {
+    void started() throws IOException {
+        //this.crawlerService.start();
         TimeZone.setDefault(TimeZone.getTimeZone("TimeZone"));
     }
 
