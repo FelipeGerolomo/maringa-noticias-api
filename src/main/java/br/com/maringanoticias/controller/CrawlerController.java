@@ -26,7 +26,7 @@ public class CrawlerController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/maringa-post")
     public String findMostWeekViewed() throws IOException {
-        Document doc = Jsoup.connect("https://maringapost.com.br/").get();
+        Document doc = Jsoup.connect("https://maringapost.com.br/").userAgent("Mozilla").get();
         return doc.toString();
     }
 }
