@@ -27,6 +27,9 @@ public class GMCOnline {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("GMC ONLINE");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("GMC_ONLINE");
         List<NewsDTO> newsList = new ArrayList<>();
         Document doc = Jsoup.connect("https://gmconline.com.br/noticias/cidade/").get();

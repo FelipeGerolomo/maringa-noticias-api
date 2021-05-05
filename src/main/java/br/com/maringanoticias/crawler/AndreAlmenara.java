@@ -27,6 +27,9 @@ public class AndreAlmenara {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("ANDRE ALMENARA");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("ANDRE_ALMENARA");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();

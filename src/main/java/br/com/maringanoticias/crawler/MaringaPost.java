@@ -26,10 +26,13 @@ public class MaringaPost {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("MARINGA POST");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("MARINGA_POST");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();
-        Document doc = Jsoup.connect(website).get();
+        Document doc = Jsoup.connect(website).userAgent("Mozilla").get();
         Elements elements = doc.select("div.td_module_flex_1.td_module_wrap.td-animation-stack");
         for (Element element : elements) {
             NewsDTO news = new NewsDTO();

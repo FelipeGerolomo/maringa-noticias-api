@@ -29,6 +29,9 @@ public class MaringaNaHora {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("MARINGA NA HORA");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("MARINGA_HORA");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();

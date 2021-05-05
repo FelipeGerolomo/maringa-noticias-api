@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @ToString(of = "id")
@@ -34,14 +35,14 @@ public abstract class BaseEntity<TDTO, TID> implements Serializable {
 	@Basic(optional = true)
 	@Column(name = "DH_INSERT")
 	@CreatedDate
-	protected LocalDateTime dhInsert;
+	protected Date dhInsert;
 
 	@Basic(optional = true)
 	@Column(name = "DH_UPDATE")
 	@LastModifiedDate
-	protected LocalDateTime dhUpdate;
+	protected Date dhUpdate;
 
 	@Basic(optional = true)
 	@Column(name = "DH_DELETE")
-	protected LocalDateTime dhDelete;
+	protected Date dhDelete;
 }

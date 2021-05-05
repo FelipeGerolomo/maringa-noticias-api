@@ -26,6 +26,9 @@ public class PlantaoMaringa {
     NewsService newsService;
 
     public void crawler() throws IOException {
+        System.out.println("========================================");
+        System.out.println("PLANTAO MARINGA");
+        System.out.println("========================================");
         SourceNewsDTO sourceNews = this.sourceNewsService.getByCdSourceNews("PLANTAO_MARINGA");
         List<NewsDTO> newsList = new ArrayList<>();
         String website = sourceNews.getDsUrl();
@@ -35,7 +38,7 @@ public class PlantaoMaringa {
             NewsDTO news = new NewsDTO();
             news.setDsTitle(element.select("h2.hidden-xs").text());
             news.setDsUrl(element.select("div.desc_noticia a").attr("href"));
-            news.setDsImageUrl(element.select("img").attr("src"));
+            news.setDsImageUrl(element.select("img").attr("data-src"));
             news.setDsDescription(element.select("div.desc_noticia p").text());
             news.setSourceNews(sourceNews);
             if (!this.newsService.isExistNews(news)) {

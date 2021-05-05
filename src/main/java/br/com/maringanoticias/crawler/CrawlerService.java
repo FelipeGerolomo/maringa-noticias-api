@@ -29,7 +29,7 @@ public class CrawlerService {
         this.maringaNaHora.crawler();
         this.andreAlmenara.crawler();
         this.gmcOnline.crawler();
-        this.maringaPost.crawler();
         this.plantaoMaringa.crawler();
+        this.maringaPost.crawler();
     }
 }

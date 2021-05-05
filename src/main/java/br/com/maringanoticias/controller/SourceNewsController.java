@@ -35,7 +35,7 @@ public class SourceNewsController extends CrudBaseController<Long, SourceNewsDTO
         return super.find(predicate);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/icon/{image}", produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/icon/{image}", produces = "image/svg+xml")
     public @ResponseBody
     byte[] getIconWeather(@PathVariable("image") String image) throws IOException {
         InputStream in = getClass().getResourceAsStream("/images/sourcenews/" + image);
