@@ -13,7 +13,7 @@ public class WeatherService extends CrudBaseService<WeatherDTO, WeatherEntity, L
     }
 
     public void getWeather() {
-        final String uri = "https://api.hgbrasil.com/weather?woeid=12580572&key=676b4a08&fields=only_results,temp,city_name,img_id,description";
+        final String uri = "https://api.hgbrasil.com/weather?woeid=455883&key=676b4a08&fields=only_results,temp,city_name,img_id,description";
 
         RestTemplate restTemplate = new RestTemplate();
         HGBrasilDTO result = restTemplate.getForObject(uri, HGBrasilDTO.class);
